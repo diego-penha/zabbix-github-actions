@@ -1,0 +1,29 @@
+name: Deploy Zabbix Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Permissoes
+        run: chmod +x scripts/*.sh
+
+      - name: Instalar PostgreSQL
+        run: ./scripts/install_postgresql.sh
+
+      - name: Instalar Zabbix
+        run: ./scripts/install_zabbix_server.sh
+
+      - name: Configurar Banco
+        run: ./scripts/configure_database.sh
+
+      - name: Configurar Apache
+        run: ./scripts/configure_apache.sh
