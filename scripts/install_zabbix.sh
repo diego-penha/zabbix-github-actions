@@ -12,4 +12,3 @@ sudo systemctl restart zabbix-agent2
 
 echo "Status:"
 systemctl is-active zabbix-agent2
-`
