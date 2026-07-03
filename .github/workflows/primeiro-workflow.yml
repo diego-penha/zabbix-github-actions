@@ -1,4 +1,4 @@
-name: Teste Runner Local
+name: Instalar Zabbix
 
 on:
   push:
@@ -6,17 +6,14 @@ on:
       - main
 
 jobs:
-  teste:
+  instalar:
     runs-on: self-hosted
 
     steps:
-      - name: Informacoes da VM
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instalar Zabbix
         run: |
-          echo "Hostname:"
-          hostname
-
-          echo "Usuario:"
-          whoami
-
-          echo "Diretorio:"
-          pwd
+          chmod +x scripts/install_zabbix.sh
+          ./scripts/install_zabbix.sh
